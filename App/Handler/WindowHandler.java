@@ -10,6 +10,8 @@ public class WindowHandler {
 
     public int currentPage;
 
+    DataHandler dataHandler;
+
     public WindowHandler(int windowNumber) {
         windowParameterList = new WindowParameter[windowNumber];
     }
@@ -29,12 +31,12 @@ public class WindowHandler {
         if (windowParameter != null) {
             if (windowParameter.getWindowType() == WindowType.TEXT_FIELD) {
                 TextfieldInputWindow inputWindow = new TextfieldInputWindow(windowParameter.programTitle, windowParameter.textTitle, windowParameter.fieldText, windowParameter.buttonText);
-                inputWindow.setHandler(this);
+                inputWindow.setHandler(this, dataHandler);
             }
 
             else if (windowParameter.getWindowType() == WindowType.DROP_DOWN) {
                 DropdownInputWindow inputWindow = new DropdownInputWindow(windowParameter.programTitle, windowParameter.textTitle, windowParameter.dropDownList, windowParameter.buttonText);
-                inputWindow.setHandler(this);
+                inputWindow.setHandler(this, dataHandler);
             }
         }
         else {
@@ -43,7 +45,13 @@ public class WindowHandler {
     }
 
     public void start() {
+        // page starts at 0
         currentPage = 0;
+
+        // reset all data
+        dataHandler = new DataHandler(getSize());
+
+        // create the first window in the list
         createSelectedWindow(0);
     }
 
@@ -51,6 +59,7 @@ public class WindowHandler {
         currentPage++;
         if (currentPage >= getSize()) {
             new ResultWindow(this);
+            dataHandler.showData();
         }
         else {
             createSelectedWindow(currentPage);

@@ -2,6 +2,7 @@ package Frames;
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 
+import Handler.DataHandler;
 import Handler.WindowHandler;
 
 import java.awt.*;
@@ -19,7 +20,8 @@ public class UserInputWindow implements ActionListener {
     protected JLabel jtextTitle;
     protected JButton nextButton;
 
-    WindowHandler handler;
+    protected WindowHandler handler;
+    protected DataHandler dataHandler;
 
     protected void prepareWindow(String programTitle) {
         frame = new JFrame(programTitle);
@@ -31,8 +33,9 @@ public class UserInputWindow implements ActionListener {
         setPanel();
     }
 
-    public void setHandler(WindowHandler handler) {
+    public void setHandler(WindowHandler handler, DataHandler dataHandler) {
         this.handler = handler;
+        this.dataHandler = dataHandler;
     }
 
     protected void setPanel() {

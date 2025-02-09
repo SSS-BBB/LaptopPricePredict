@@ -57,6 +57,9 @@ public class DropdownInputWindow extends UserInputWindow {
     @Override
     public void actionPerformed(ActionEvent e) {
         // Add Data
+        if (e.getSource() == nextButton) {
+            dataHandler.addData(handler.currentPage, dropDownBox.getSelectedItem().toString());
+        }
 
         // Go to next window
         super.actionPerformed(e);
