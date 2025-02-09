@@ -1,5 +1,11 @@
+import javax.swing.*;
+
+import Frames.UserInputWindow;
+
+import java.awt.*;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        UserInputWindow testWindow = new UserInputWindow("Enter weight", "11", "Next");
     }
 }
