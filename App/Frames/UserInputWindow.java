@@ -1,5 +1,7 @@
 package Frames;
 import javax.swing.*;
+import javax.swing.plaf.ColorUIResource;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,6 +37,7 @@ public class UserInputWindow implements ActionListener, ItemListener {
         prepareWindow(programTitle);
 
         // Set Components
+        UIManager.put("ComboBox.selectionBackground", new ColorUIResource(Color.LIGHT_GRAY));
         setDropDownComponents(textTitle, dropDownList, buttonText);
 
         // Show Frame
@@ -122,12 +125,22 @@ public class UserInputWindow implements ActionListener, ItemListener {
         // textTitle of the page
         addTextLabel(textTitle);
 
+        // Padding
+        panel.add(Box.createRigidArea(new Dimension(0, 20)));
+
         // Dropdown Box
         dropDownBox = new JComboBox<>(dropDownList);
         dropDownBox.setAlignmentX(Component.CENTER_ALIGNMENT);
-        dropDownBox.setPreferredSize(new Dimension(500, 30));
-        textInput.setMaximumSize(dropDownBox.getPreferredSize());
+        dropDownBox.setPreferredSize(new Dimension(500, 40));
+        dropDownBox.setMaximumSize(dropDownBox.getPreferredSize());
+        dropDownBox.setFont(new Font("Tahoma", Font.PLAIN, 16));
+        dropDownBox.setBackground(Color.WHITE);
+        dropDownBox.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        dropDownBox.setForeground(Color.BLACK);
         panel.add(dropDownBox);
+
+        // Padding
+        panel.add(Box.createRigidArea(new Dimension(0, 20)));
 
         // Next Button
         addButton(buttonText);
