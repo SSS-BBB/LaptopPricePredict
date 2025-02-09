@@ -10,12 +10,12 @@ import java.awt.event.ItemListener;
 
 public class UserInputWindow implements ActionListener {
     
-    JFrame frame;
+    protected JFrame frame;
 
-    JPanel panel;
+    protected JPanel panel;
 
-    JLabel jtextTitle;
-    JButton nextButton;
+    protected JLabel jtextTitle;
+    protected JButton nextButton;
 
     UserInputWindow nextPage;
 

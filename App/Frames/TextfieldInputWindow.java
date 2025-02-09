@@ -9,6 +9,7 @@ public class TextfieldInputWindow extends UserInputWindow {
     JTextField textInput; // For Continuous data
 
     public TextfieldInputWindow(String programTitle, String textTitle, String fieldText, String buttonText) {
+
         // Constructor for Field input
         prepareWindow(programTitle);
 
