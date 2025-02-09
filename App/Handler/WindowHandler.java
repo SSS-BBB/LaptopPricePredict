@@ -1,6 +1,7 @@
 package Handler;
 
 import Frames.DropdownInputWindow;
+import Frames.ResultWindow;
 import Frames.TextfieldInputWindow;
 
 public class WindowHandler {
@@ -11,7 +12,6 @@ public class WindowHandler {
 
     public WindowHandler(int windowNumber) {
         windowParameterList = new WindowParameter[windowNumber];
-        currentPage = 0;
     }
 
     public void addSelectedPage(int pageNumber, String programTitle, String textTitle, String buttonText, String fieldText) {
@@ -43,17 +43,18 @@ public class WindowHandler {
     }
 
     public void start() {
+        currentPage = 0;
         createSelectedWindow(0);
     }
 
     public void nextPage() {
         currentPage++;
         if (currentPage >= getSize()) {
-            System.out.println("No more windows!");
-            return;
+            new ResultWindow(this);
         }
-
-        createSelectedWindow(currentPage);
+        else {
+            createSelectedWindow(currentPage);
+        }
     }
 
     public int getSize() {
