@@ -1,43 +1,69 @@
 package Frames;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
-public class UserInputWindow extends JFrame {
+public class UserInputWindow implements ActionListener, ItemListener {
     
+    JFrame frame;
+
     JPanel panel;
 
-    JLabel jTitle;
-    JTextField textInput;
+    JLabel jtextTitle;
+    JTextField textInput; // For Continuous data
+    JComboBox dropDownBox; // For Categorical data
     JButton nextButton;
 
     UserInputWindow nextPage;
 
-    public UserInputWindow(String title, String fieldText, String buttonText) {
+    public UserInputWindow(String programTitle, String textTitle, String fieldText, String buttonText) {
         // Constructor for Field input
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(800, 600);
-        setLocationRelativeTo(null);
+        prepareWindow(programTitle);
+
+        // Set Components
+        setTextFieldComponents(textTitle, fieldText, buttonText);
+
+        // Show Frame
+        frame.setVisible(true);
+    }
+
+    public UserInputWindow(String programTitle, String textTitle, String[] dropDownList, String buttonText) {
+        // Constructor for Category input
+        prepareWindow(programTitle);
+
+        // Set Components
+        setDropDownComponents(textTitle, dropDownList, buttonText);
+
+        // Show Frame
+        frame.setVisible(true); 
+    }
+
+    private void prepareWindow(String programTitle) {
+        frame = new JFrame(programTitle);
+        
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(800, 600);
+        frame.setLocationRelativeTo(null);
 
         setPanel();
-
-        setComponents(title, fieldText, buttonText);
-
-        setVisible(true);
     }
 
     private void setPanel() {
         panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        setContentPane(panel);
+        frame.setContentPane(panel);
     }
 
-    private void setComponents(String title, String fieldText, String buttonText) {
+    private void setTextFieldComponents(String textTitle, String fieldText, String buttonText) {
         // Set components for Field input
 
-        // Title of the page
-        jTitle = new JLabel(title);
-        jTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panel.add(jTitle);
+        // textTitle of the page
+        jtextTitle = new JLabel(textTitle);
+        jtextTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(jtextTitle);
 
         // Text field
         textInput = new JTextField(fieldText);
@@ -48,6 +74,38 @@ public class UserInputWindow extends JFrame {
         nextButton = new JButton(buttonText);
         nextButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(nextButton);
+    }
+
+    private void setDropDownComponents(String textTitle, String[] dropDownList, String buttonText) {
+        // Set components for Field input
+
+        // textTitle of the page
+        jtextTitle = new JLabel(textTitle);
+        jtextTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(jtextTitle);
+
+        // Dropdown Box
+        dropDownBox = new JComboBox<>(dropDownList);
+        dropDownBox.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(dropDownBox);
+
+        // Next Button
+        nextButton = new JButton(buttonText);
+        nextButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(nextButton);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // Button Clicked
+        
+    }
+
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+        // For Categorical data
+        
     }
 
 }
