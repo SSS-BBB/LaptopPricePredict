@@ -2,6 +2,8 @@ package Frames;
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 
+import Handler.WindowHandler;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,7 +19,7 @@ public class UserInputWindow implements ActionListener {
     protected JLabel jtextTitle;
     protected JButton nextButton;
 
-    UserInputWindow nextPage;
+    WindowHandler handler;
 
     protected void prepareWindow(String programTitle) {
         frame = new JFrame(programTitle);
@@ -27,6 +29,10 @@ public class UserInputWindow implements ActionListener {
         frame.setLocationRelativeTo(null);
 
         setPanel();
+    }
+
+    public void setHandler(WindowHandler handler) {
+        this.handler = handler;
     }
 
     protected void setPanel() {
@@ -56,13 +62,17 @@ public class UserInputWindow implements ActionListener {
         nextButton.setBackground(Color.BLUE);
         nextButton.setForeground(Color.WHITE);
         nextButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        nextButton.addActionListener(this);
         panel.add(nextButton);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Button Clicked
-        
+        // Next window
+        if (e.getSource() == nextButton) {
+            frame.dispose();
+            handler.nextPage();
+        }
     }
 
 }
