@@ -1,5 +1,7 @@
 import javax.swing.*;
 
+import Frames.DropdownInputWindow;
+import Frames.TextfieldInputWindow;
 import Frames.UserInputWindow;
 
 import java.awt.*;
@@ -7,17 +9,26 @@ import java.awt.*;
 public class Main {
     public static void main(String[] args) {
         // Dropdown Window Test
-        UserInputWindow testWindow = new UserInputWindow("Brand", 
+        // dropDownWindowTest();
+
+        // TextField Window Test
+        // textFieldWindowTest();
+        
+    }
+
+    public static void dropDownWindowTest() {
+        UserInputWindow testWindow = new DropdownInputWindow("Brand", 
                                 "Select Brand", 
                                 new String[]{ "Apple", "HP", "MSI", "MICROSOFT", "Dell" }, 
                                 "Next"
         );
+    }
 
-        // TextField Window Test
-        // UserInputWindow testWindow = new UserInputWindow("Weight", 
-        //                         "Enter Weight", 
-        //                         "", 
-        //                         "Next"
-        // );
+    public static void textFieldWindowTest() {
+        UserInputWindow testWindow = new TextfieldInputWindow("Weight", 
+                                "Enter Weight", 
+                                "", 
+                                "Next"
+        );
     }
 }
