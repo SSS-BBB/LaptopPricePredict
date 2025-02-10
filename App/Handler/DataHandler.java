@@ -40,11 +40,11 @@ public class DataHandler {
                 connection.setDoOutput(true);
 
                 // Request
-                String jsonDataInput = "{'name': 'Yo', 'age': '20'}";
+                String arrayToStringInput = formatArrayToString();
 
                 try (OutputStream os = connection.getOutputStream()) {
-                    byte[] jsonByte = jsonDataInput.getBytes("utf-8");
-                    os.write(jsonByte, 0, jsonByte.length);
+                    byte[] byteInput = arrayToStringInput.getBytes("utf-8");
+                    os.write(byteInput, 0, byteInput.length);
                 }
 
                 // Response
@@ -64,6 +64,8 @@ public class DataHandler {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+
+        // Post Request Logic from https://www.baeldung.com/httpurlconnection-post
     }
 
     public float getPredictedPrice() {
@@ -73,6 +75,26 @@ public class DataHandler {
     public void makeDummy() {
         // Create Dummy Datas for Testing
         dataList = new String[]{"HP", "Intel i7", "16", "2TB SSD", "Nvidia GTX 1650", "11.5", "1920x1080", "15", "2", "Windows"};
+    }
+
+    public String formatArrayToString() {
+        // Convert from Array To String and send this String to server
+        String splitWith = ",";
+        StringBuilder formattedData = new StringBuilder();
+
+        for (int i = 0; i < dataList.length; i++) {
+            // Not last index
+            if (i < dataList.length - 1) {
+                formattedData.append(dataList[i] + splitWith);
+            }
+
+            // Last index
+            else {
+                formattedData.append(dataList[i]);
+            }
+        }
+
+        return formattedData.toString();
     }
     
 }
