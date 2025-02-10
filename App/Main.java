@@ -3,6 +3,7 @@ import javax.swing.*;
 import Frames.DropdownInputWindow;
 import Frames.TextfieldInputWindow;
 import Frames.UserInputWindow;
+import Handler.DataHandler;
 import Handler.WindowHandler;
 
 import java.awt.*;
@@ -19,11 +20,24 @@ public class Main {
         // textFieldWindowTest();
 
         // Multiple Window Test
-        multipleWindowTest();
+        // multipleWindowTest();
+
+        // Server Test
+        serverTest();
+
+        // Start
+        // startProgram();
         
     }
 
-    public static void multipleWindowTest() {
+    public static void serverTest() {
+        DataHandler dataHandler = new DataHandler(10);
+        dataHandler.makeDummy();
+        dataHandler.sendDataForPrediction();
+        // dataHandler.showData();
+    }
+
+    public static void startProgram() {
         windowHandler = new WindowHandler(10);
 
         windowHandler.addSelectedPage(0, "Brand", "Selct Brand", "Next", new String[]{ "Apple", "HP", "MSI", "MICROSOFT", "Dell" });

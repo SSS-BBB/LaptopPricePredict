@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Handler.DataHandler;
 import Handler.WindowHandler;
 
 public class ResultWindow implements ActionListener {
@@ -18,9 +19,11 @@ public class ResultWindow implements ActionListener {
     JButton newButton;
 
     WindowHandler handler;
+    DataHandler dataHandler;
 
-    public ResultWindow(WindowHandler handler) {
+    public ResultWindow(WindowHandler handler, DataHandler dataHandler) {
         this.handler = handler;
+        this.dataHandler = dataHandler;
 
         // Frame
         frame = new JFrame("Result");
