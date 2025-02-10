@@ -8,3 +8,6 @@ Data used in this project: https://www.kaggle.com/datasets/asinow/laptop-price-d
 
 ## Notebook
 Python Notebook to create this model: https://www.kaggle.com/code/sssbbbkaow/laptop-price-prediction-using-randomforestregresso
+
+## Model
+In order to run this program you need to get the model and the encoders first, which you can do by running the notebook in the Model Folder which is the notebook that is used to create the model. Also don't forget to change the file path to your model/encoders.
