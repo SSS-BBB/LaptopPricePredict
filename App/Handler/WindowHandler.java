@@ -58,6 +58,7 @@ public class WindowHandler {
     public void nextPage() {
         currentPage++;
         if (currentPage >= getSize()) {
+            // Result Windpw
             dataHandler.sendDataForPrediction();
             new ResultWindow(this, dataHandler);
         }

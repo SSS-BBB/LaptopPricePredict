@@ -12,7 +12,7 @@ public class DataHandler {
 
     String[] dataList;
 
-    float predictedPrice;
+    String predictedPrice;
 
     public DataHandler(int size) {
         dataList = new String[size];
@@ -54,7 +54,9 @@ public class DataHandler {
                         while ((responseLine = br.readLine()) != null) {
                             response.append(responseLine.trim());
                         }
-                        System.out.println(response.toString());
+
+                        // Predicted Price from the server
+                        predictedPrice = response.toString();
                     }
 
             } catch (IOException e) {
@@ -68,7 +70,7 @@ public class DataHandler {
         // Post Request Logic from https://www.baeldung.com/httpurlconnection-post
     }
 
-    public float getPredictedPrice() {
+    public String getPredictedPrice() {
         return predictedPrice;
     }
 

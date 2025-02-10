@@ -50,7 +50,7 @@ public class ResultWindow implements ActionListener {
         panel.add(Box.createRigidArea(new Dimension(0, 20)));
 
         // Show Result
-        addTextResult("500");
+        addTextResult(dataHandler.getPredictedPrice());
 
         // Padding
         panel.add(Box.createRigidArea(new Dimension(0, 20)));

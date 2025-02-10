@@ -23,10 +23,10 @@ public class Main {
         // multipleWindowTest();
 
         // Server Test
-        serverTest();
+        // serverTest();
 
         // Start
-        // startProgram();
+        startProgram();
         
     }
 
