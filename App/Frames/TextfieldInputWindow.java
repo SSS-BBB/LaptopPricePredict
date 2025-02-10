@@ -3,6 +3,7 @@ package Frames;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.regex.Pattern;
 
 public class TextfieldInputWindow extends UserInputWindow {
 
@@ -54,8 +55,22 @@ public class TextfieldInputWindow extends UserInputWindow {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Add Data
         if (e.getSource() == nextButton) {
+            // Check empty
+            if (textInput.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(frame, "Please Enter a Number", "Enter a number", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Check if input is valid (number) from https://www.baeldung.com/java-check-string-number
+            Pattern numPattern = Pattern.compile("-?\\d+(\\.\\d+)?");
+
+            if (!numPattern.matcher(textInput.getText()).matches()) {
+                JOptionPane.showMessageDialog(frame, "Please Enter a Number", "Enter a number", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Add Data
             dataHandler.addData(handler.currentPage, textInput.getText());
         }
 

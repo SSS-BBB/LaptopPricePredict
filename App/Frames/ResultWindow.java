@@ -44,7 +44,7 @@ public class ResultWindow implements ActionListener {
         panel.add(Box.createVerticalGlue());
 
         // textTitle of the page
-        addTextLabel("Result from the model");
+        addTextLabel("Predicted Price from the model");
 
         // Padding
         panel.add(Box.createRigidArea(new Dimension(0, 20)));
@@ -73,7 +73,7 @@ public class ResultWindow implements ActionListener {
     }
 
     protected void addTextResult(String result) {
-        textResult = new JLabel(result);
+        textResult = new JLabel("$" + result);
         textResult.setAlignmentX(Component.CENTER_ALIGNMENT);
         textResult.setFont(new Font("Tahoma", Font.BOLD, 50));
         textResult.setForeground(Color.GREEN);
